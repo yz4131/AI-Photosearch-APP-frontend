@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Random Cocktail Recipe</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div>
+        <input type="search" value="" id="search" onchange="photosearch()">
+        <div id="display_image"></div>
+        <script>
+            function photosearch(){
+                var x = document.getElementById("search").value;  
+                fetch("https://www.thecocktaildb.com/api/json/v1/1/"+x+".php")
+                //用这个api测试
+                //实际使用'https://dl2y7ow6n3.execute-api.us-east-1.amazonaws.com/S1/search?q='+x
+                .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("NETWORK RESPONSE ERROR");
+                    }
+                })
+                .then(data => {
+                    console.log(data);
+                    display(data)
+                })
+                .catch((error) => console.error("FETCH ERROR:", error));
+
+                function display(data) {
+                    const photores = data.drinks[0];
+                    //需要看api gateway返回格式                  
+                    document.querySelector("#display_image").style.backgroundImage = "url('" + photores.strDrinkThumb + "')";
+                }
+            }
+            </script>
+        </div>    
+  </body>
+</html>
