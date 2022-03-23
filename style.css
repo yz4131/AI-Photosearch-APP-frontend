@@ -1,14 +1,14 @@
 html {
     height: 100%;
   }
-  body {
+  body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    background-size: cover;
-    font-family: sans-serif;
-  }
+    gap: 10px;
+    flex-direction: column;
+    height:  100vh
+}
   #display_image{
     width: 375px;
     height: 211px;

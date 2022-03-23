@@ -2,19 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Random Cocktail Recipe</title>
+    <title>Photo API</title>
     <link href="style.css" rel="stylesheet" />
   </head>
   <body>
     <div>
-        <input type="search" value="" id="search" onchange="photosearch()">
+        <input type="search" value="" id="search">   
+        <button onclick="photosearch()">SEARCH</button>     
         <div id="display_image"></div>
+        <div>
+            <h1>Welcome to our speech to text tool</h1>
+            <h4 id="status">Press the button below, and start speaking</h4>
+            <button onclick="startRecognition()">Speech to text</button>
+            <input type="search" value="" id="result" class="hide">
+            <button onclick="photosearch()">SEARCH</button>
+          </div>
+          <script src="test.js"></script>
         <script>
-            function photosearch(){
-                var x = document.getElementById("search").value;  
-                fetch("https://www.thecocktaildb.com/api/json/v1/1/"+x+".php")
-                //用这个api测试
-                //实际使用'https://dl2y7ow6n3.execute-api.us-east-1.amazonaws.com/S1/search?q='+x
+            function photosearch(){    
+                var x = document.getElementById("result").value;  
+                if (x==''){
+                    var x = document.getElementById("search").value;  
+                }       
+                
+                const url = "https://www.thecocktaildb.com/api/json/v1/1/"+x+".php";
+                fetch(url)//, {
+                    //method: "GET",
+                    //withCredentials: false,
+                    //headers: {
+                        //'x-api-key': 'FsGSZy92TQ2ciUyTD7cbD39eDIzpngEz5yn99XvU'
+                    //}
+                //})
+                //用这个api测试 'https://www.thecocktaildb.com/api/jspn/v1/1/' + x + '.php'
+                //实际使用'https://dl2y7ow6n3.execute-api.us-east-1.amazonaws.com/S1/search?q={' + x + '}'
                 .then((response) => {
                 if (response.ok) {
                     return response.json();
@@ -33,8 +53,15 @@
                     //需要看api gateway返回格式                  
                     document.querySelector("#display_image").style.backgroundImage = "url('" + photores.strDrinkThumb + "')";
                 }
-            }
-            </script>
+            }   
+            </script>           
         </div>    
+        <div>
+            <button onclick="window.location.href='put.html'">
+                UPLOAD
+              </button>
+        </div>
   </body>
 </html>
+
+ 
