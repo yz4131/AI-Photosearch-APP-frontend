@@ -18,7 +18,6 @@ image_input.addEventListener("change", function(){
         method:'PUT',
         headers:{
             'Content-Type': this.files[0].type,
-          
             "x-amz-meta-customLabels": labels        
         },
         body: this.files[0]
