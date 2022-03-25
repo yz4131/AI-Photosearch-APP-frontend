@@ -11,10 +11,15 @@ html {
 }
   #display_image{
     width: 375px;
-    height: 211px;
+    height: 511px;
     border: 1px solid black;
     background-position: center;
     background-size: cover;
     max-height:100%; 
     max-width:100%;
+}
+img{
+  max-width: 100px;
+  max-height: 100px;
+  gap: 10px;
 }
