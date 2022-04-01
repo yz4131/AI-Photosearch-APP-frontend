@@ -34,8 +34,6 @@
                         'Content-Type': 'application/json'
                     }
                 })
-                //用这个api测试 'https://www.thecocktaildb.com/api/json/v1/1/' + x + '.php'
-                //实际使用'https://dl2y7ow6n3.execute-api.us-east-1.amazonaws.com/S1/search?q={' + x + '}'
                 .then((response) => {
                 if (response.ok) {
                     return response.json();

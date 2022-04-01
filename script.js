@@ -19,7 +19,7 @@ image_input.addEventListener("change", function(){
         headers:{
             'Content-Type': this.files[0].type,
             "x-amz-meta-customLabels": labels,
-            "x-api-key": "FsGSZy92TQ2ciUyTD7cbD39eDIzpngEz5yn99XvU"
+            "x-api-key":""
 
         },
         body: this.files[0]
